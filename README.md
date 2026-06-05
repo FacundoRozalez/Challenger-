@@ -1,12 +1,17 @@
 ```mermaid
 erDiagram
+    %% --- FLUJO PRINCIPAL: USUARIO A BILLETERA ---
     users ||--|| wallets : "posee (1:1)"
+
+    %% --- FLUJO DE FONDOS Y MOVIMENTOS ---
     wallets ||--o{ balances : "tiene (1:N)"
-    currencies ||--o{ balances : "moneda (1:N)"
-    currencies ||--o{ exchange_rates : "de_moneda (1:N)"
-    currencies ||--o{ exchange_rates : "a_moneda (1:N)"
     wallets ||--o{ transactions : "envia (1:N)"
     wallets ||--o{ transactions : "recibe (1:N)"
+
+    %% --- CONFIGURACIÓN DE MONEDAS (Separadas abajo) ---
+    currencies ||--o{ exchange_rates : "de_moneda (1:N)"
+    currencies ||--o{ exchange_rates : "a_moneda (1:N)"
+    currencies ||--o{ balances : "moneda (1:N)"
 
     users {
         UUID id PK
