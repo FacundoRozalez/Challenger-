@@ -1,3 +1,4 @@
+```mermaid
 erDiagram
     users ||--|| wallets : "posee (1:1)"
     wallets ||--o{ balances : "tiene (1:N)"
@@ -55,3 +56,4 @@ erDiagram
         NUMERIC exchange_rate
         TIMESTAMP created_at
     }
+```
